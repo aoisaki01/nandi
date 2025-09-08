@@ -1,29 +1,15 @@
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-const Transition = () => {
-  // --- PERUBAHAN DI SINI ---
-  const transitionVariants = {
-    initial: {
-      clipPath: 'circle(0% at 0% 100%)',
-    },
-    animate: {
-      clipPath: 'circle(150% at 0% 100%)',
-      transition: { duration: 0.6, ease: 'easeInOut' },
-    },
-    exit: {
-      clipPath: 'circle(0% at 0% 100%)',
-      transition: { duration: 0.6, ease: 'easeInOut', delay: 0.2 },
-    },
-  } as const; // <-- TAMBAHKAN 'as const' DI SINI
+type TransitionProps = {
+  animationClass: string;
+  onAnimationEnd: () => void;
+};
 
+const Transition = ({ animationClass, onAnimationEnd }: TransitionProps) => {
   return (
-    <motion.div
-      className="fixed top-0 left-0 w-full h-screen bg-[#000011] z-[100] flex items-center justify-center"
-      variants={transitionVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
+    <div
+      className={`fixed top-0 left-0 w-full h-screen bg-[#000014] z-[100] flex items-center justify-center ${animationClass}`}
+      onAnimationEnd={onAnimationEnd} // Panggil fungsi saat animasi CSS selesai
     >
       <div className="relative w-48 h-48">
         <Image 
@@ -33,7 +19,7 @@ const Transition = () => {
           className="object-contain"
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 

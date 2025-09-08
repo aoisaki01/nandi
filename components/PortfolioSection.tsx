@@ -1,5 +1,6 @@
 import VideoCard from './VideoCard';
 import { Inter } from 'next/font/google';
+import Image from 'next/image';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,32 +13,45 @@ type Video = {
 
 const PortfolioSection = ({ videos }: { videos: Video[] }) => {
   return (
+    // Pastikan TIDAK ADA `bg-black` di baris <section> ini.
     <section
       id="portfolio"
-      className={`relative w-full min-h-screen text-white flex items-center py-20 ${inter.className}`}
+      className={`relative w-full min-h-screen text-white flex items-center py-24 overflow-hidden ${inter.className}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1f] via-[#0d1b2a] to-[#000]" />
-      <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay" style={{ backgroundImage: "url('/images/grain.avif')" }} />
-
-      <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12">
-        <h2 className="text-4xl font-semibold text-center mb-16 tracking-tight">
-          <span className="text-blue-400">Equals</span>{' '}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600">Portfolio</span>
-        </h2>
-
+      {/* Komponen Image sebagai background */}
+      <Image
+        src="/images/blue.jpg"
+        alt="Portfolio Background"
+        fill
+        className="object-cover -z-20"
+      />
+      {/* Overlay gelap di atas image, BUKAN di section */}
+      <div className="absolute inset-0 bg-black/60 -z-10" /> 
+      
+      {/* Konten utama */}
+      <div className="relative w-full max-w-7xl mx-auto px-6 md:px-12 z-10">
+        <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                My <span className="text-blue-400">Portfolio</span>
+            </h2>
+            <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+                A collection of my recent video editing and motion graphic works.
+            </p>
+            <div className="mt-6 h-1 w-24 bg-blue-500 mx-auto rounded-full"></div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
-          {videos.map((video) => (
+          {videos.map((video, index) => (
             <div
               key={video.id}
-              className="flex justify-center items-center transition-transform duration-300 hover:scale-[1.02]"
+              style={{ 
+                marginTop: index % 2 !== 0 ? '4rem' : '0',
+              }}
             >
-              <div className="w-full max-w-md">
                 <VideoCard
                   title={video.title}
                   thumbnailUrl={video.thumbnailUrl}
                   videoUrl={video.videoUrl}
                 />
-              </div>
             </div>
           ))}
         </div>

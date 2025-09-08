@@ -68,3 +68,28 @@ html {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
+@keyframes wipe-in {
+  from {
+    clip-path: circle(0% at 0% 100%);
+  }
+  to {
+    clip-path: circle(150% at 0% 100%);
+  }
+}
+
+@keyframes wipe-out {
+  from {
+    clip-path: circle(150% at 0% 100%);
+  }
+  to {
+    clip-path: circle(0% at 0% 100%);
+  }
+}
+
+.animate-wipe-in {
+  animation: wipe-in 0.6s ease-in-out forwards;
+}
+
+.animate-wipe-out {
+  animation: wipe-out 0.6s ease-in-out forwards;
+}

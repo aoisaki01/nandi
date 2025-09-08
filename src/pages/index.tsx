@@ -1,8 +1,7 @@
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/Navbar'; // Diubah dari ../../components
 import { Poppins, Inter } from 'next/font/google';
-import PortfolioSection from '../../components/PortfolioSection';
+import PortfolioSection from '../../components/PortfolioSection'; // Diubah dari ../../components
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -14,9 +13,7 @@ const inter = Inter({
   weight: ['400', '500'],
 });
 
-const ReactPlayer = dynamic(() => import('react-player/youtube'), {
-  ssr: false,
-});
+// Komponen ReactPlayer dihapus dari sini
 
 interface HomeProps {
   videos: Array<{
@@ -33,19 +30,19 @@ export default function Home({ videos }: HomeProps) {
       <main className="relative w-full h-screen overflow-hidden bg-black">
         <div className="absolute top-0 left-0 w-full h-full z-0">
           <div className="absolute w-[300%] h-[300%] -top-[100%] -left-[100%] filter blur-sm">
-            <ReactPlayer
-              url="https://www.youtube.com/watch?v=qzR7vixSNsQ"
-              playing={true}
-              loop={true}
-              muted={true}
-              controls={false}
-              playbackRate={2 }
-              width="100%"
-              height="100%"
-              config={{
-                playerVars: { modestbranding: 1, rel: 0 },
-              }}
+            
+            {/* --- PERUBAHAN UTAMA DI SINI --- */}
+            {/* Mengganti ReactPlayer dengan tag <video> statis */}
+            <video
+              src="/video.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
             />
+            {/* --- AKHIR DARI PERUBAHAN --- */}
+
           </div>
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40"></div>
         </div>
@@ -67,13 +64,15 @@ export default function Home({ videos }: HomeProps) {
                 <p className={`text-sm tracking-widest text-gray-400 mt-4 uppercase ${inter.className}`}>
                   video editor | motion graphic designer | content creator
                 </p>
+                <p className={`text-sm tracking-widest text-gray-400 mt-4 uppercase ${inter.className}`}>
+                  #partofpasifixc  
+                </p>
                 <a
                   href="mailto:nandihabibie@gmail.com"
                   className="inline-block mt-6 px-8 py-3 border border-gray-300 rounded-lg text-gray-200 text-base font-medium text-center hover:border-blue-300 transition-colors"
                 >
                   Contact Me
                 </a>
-                
               </div>
               <div className="relative w-48 h-48 lg:w-60 lg:h-96 flex-shrink-0">
                 <Image
@@ -93,6 +92,7 @@ export default function Home({ videos }: HomeProps) {
   );
 }
 
+// FUNGSI getStaticProps Anda tetap sama persis
 export async function getStaticProps() {
   const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
   const PLAYLIST_ID = 'PLxholx9QaiMQs30FSPlIB014uL8cYrDUI';

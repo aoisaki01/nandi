@@ -36,7 +36,7 @@ const AboutPage = () => {
             <p className={`text-gray-400 leading-relaxed ${inter.className}`}>
 A versatile and skilled creative professional hailing from Banjarmasin, Muhammad Nandi Habibie possesses a comprehensive mastery of the digital production workflow. He is highly proficient with industry-standard editing software, including Adobe After Effects, Premiere Pro, Photoshop, and Illustrator, consistently delivering high-quality visual content. Uniquely combining his creative talents with technical acumen, Nandi is also experienced in server operations and management. He is a collaborative team player, valued for his ability to work effectively with others to achieve shared goals and project success            </p>
             <p className={`mt-4 text-gray-400 leading-relaxed ${inter.className}`}>
-#partofpasifixc            </p>
+          </p>
           </div>
         </div>
       </section>
