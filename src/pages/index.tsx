@@ -59,7 +59,7 @@ export default function Home({ videos }: HomeProps) {
                   </div>
                 </h1>
                 <p className={`text-lg lg:text-xl text-gray-200 mt-2 ${inter.className}`}>
-                  MUHAMMAD NANDI HABIBIE
+                  MUHAMMAD NANDI HABIBI
                 </p>
                 <p className={`text-sm tracking-widest text-gray-400 mt-4 uppercase ${inter.className}`}>
                   video editor | motion graphic designer | content creator
