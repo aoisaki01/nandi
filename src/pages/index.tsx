@@ -29,7 +29,7 @@ export default function Home({ videos }: HomeProps) {
     <div>
       <main className="relative w-full h-screen overflow-hidden bg-black">
         <div className="absolute top-0 left-0 w-full h-full z-0">
-          <div className="absolute w-[300%] h-[300%] -top-[100%] -left-[100%] filter blur-sm">
+          <div className="absolute w-[300%] h-[300%] -top-[100%] -left-[100%] ">
             
             {/* --- PERUBAHAN UTAMA DI SINI --- */}
             {/* Mengganti ReactPlayer dengan tag <video> statis */}
